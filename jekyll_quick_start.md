@@ -7,3 +7,12 @@ cd ~/myblog
 bundle exec jekyll serve
 ```
 
+#### 使用GitHub Pages
+
+修改`Gemfile`内容如下：
+
+```ruby
+source 'https://gems.ruby-china.org/'
+
+gem 'github-pages', group: :jekyll_plugins
+```
