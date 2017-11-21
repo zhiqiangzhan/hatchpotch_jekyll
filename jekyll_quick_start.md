@@ -16,3 +16,6 @@ source 'https://gems.ruby-china.org/'
 
 gem 'github-pages', group: :jekyll_plugins
 ```
+
+[GitHub Pages插件白名单](https://help.github.com/articles/configuring-jekyll-plugins/)
+
