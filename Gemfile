@@ -26,5 +26,15 @@ source 'https://gems.ruby-china.org/'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'github-pages', group: :jekyll_plugins
+group :jekyll_plugins do
+  gem 'github-pages'
+  gem 'reset-jekyll-config', '~> 0.1'
+end
 
+
+
+
+
+# Jekyll::Hooks.register :site, :after_reset do |site|
+#   puts "site fire #{event}"
+# end
