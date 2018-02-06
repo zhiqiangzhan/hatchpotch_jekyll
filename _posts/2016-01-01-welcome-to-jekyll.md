@@ -19,6 +19,55 @@ print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
 
+### Hooks
+
+#### Jekyll::Site
+
+```ruby
+Jekyll::Hooks.trigger :site, :after_init, self
+Jekyll::Hooks.trigger :site, :after_reset, self
+Jekyll::Hooks.trigger :site, :post_read, self
+Jekyll::Hooks.trigger :site, :pre_render, self, payload
+Jekyll::Hooks.trigger :site, :post_render, self, payload
+Jekyll::Hooks.trigger :site, :post_write, self
+
+document.trigger_hooks(:post_render)
+page.trigger_hooks(:post_render)
+```
+
+#### Jekyll::Document
+
+```ruby
+def trigger_hooks(hook_name, *args)
+  Jekyll::Hooks.trigger collection.label.to_sym, hook_name, self, *args if collection
+  Jekyll::Hooks.trigger :documents, hook_name, self, *args
+end
+
+trigger_hooks(:post_init)
+trigger_hooks(:post_write)
+```
+
+#### Jekyll::Page
+
+```ruby
+Jekyll::Hooks.trigger :pages, :post_init, self
+
+def trigger_hooks(hook_name, *args)
+  Jekyll::Hooks.trigger :pages, hook_name, self, *args
+end
+```
+
+
+#### Jekyll::Convertible
+
+```ruby
+Jekyll::Hooks.trigger hook_owner, :post_render, self
+Jekyll::Hooks.trigger hook_owner, :post_write, self
+```
+
+
+
+
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
 [jekyll-docs]: https://jekyllrb.com/docs/home

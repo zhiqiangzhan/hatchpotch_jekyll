@@ -31,4 +31,4 @@ module Jekyll
 
 end
 
-puts ">>>>> (#{__FILE__}) Loaded!"
+puts ">>> (#{__FILE__}) Loaded!"
